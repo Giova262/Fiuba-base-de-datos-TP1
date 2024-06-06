@@ -1,4 +1,5 @@
 import sqlite3
+import pandas as pd
 
 def create_connection(db_file):
     """Create a database connection to an SQLite database"""
@@ -43,10 +44,20 @@ def select_all_users(conn):
     for row in rows:
         print(row)
 
+def pandasVerifyInstallation():
+    # Create a DataFrame
+    data = {'Name': ['Alice', 'Bob', 'Charlie'], 'Age': [25, 30, 35]}
+    df = pd.DataFrame(data)
+
+    # Display the DataFrame
+    print(df)
+
 def main():
     database = "test.db"
 
     print("Starting..")
+
+    pandasVerifyInstallation()
 
     # create a database connection
     conn = create_connection(database)
