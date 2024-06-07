@@ -46,11 +46,11 @@ def select_all_users(conn):
 
 def pandasVerifyInstallation():
     # Create a DataFrame
-    data = {'Name': ['Alice', 'Bob', 'Charlie'], 'Age': [25, 30, 35]}
-    df = pd.DataFrame(data)
+    df = pd.read_csv('1000_cryptos.csv')
+    for index, row in df.iterrows():
+        print(f"Index: {index}")
+        print(f"Row: {row}")
 
-    # Display the DataFrame
-    print(df)
 
 def main():
     database = "test.db"
