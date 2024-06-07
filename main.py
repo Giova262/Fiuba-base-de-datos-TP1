@@ -4,14 +4,14 @@ from databaseHelper import (
     insert_user,
     select_all_users,
 )
-from pandasHelper import pandasVerifyInstallation
+from pandasHelper import checkData
 
 
 def main():
 
     print("Starting..")
 
-    pandasVerifyInstallation()
+    dataForDatabase = checkData()
 
     # create a database connection
     database = "test.db"
@@ -30,7 +30,7 @@ def main():
 
         # query users
         print("Querying all users:")
-        select_all_users(conn)
+        # select_all_users(conn)
         conn.close()
     else:
         print("Error! Cannot create the database connection.")
