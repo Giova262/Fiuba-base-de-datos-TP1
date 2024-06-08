@@ -51,14 +51,12 @@ El workflow se divide en distintas secciones de código que reciben un DataFrame
 ## 1. NullTransform
 
 ### Filtro
-Descarta la fila si tiene más de dos campos en nulo, o no tiene valor en las columnas *start_date*, *end_date*, *latitud*, *longitud*, *property_surface_total*, *property_price*, o *property_currency*.
+Descarta la fila si tiene más de dos campos en nulo, o no tiene valor en las columnas *start_date*, *end_date*, *latitud*, *longitud*, *place_l2*, *property_surface_total*, *property_price*, o *property_currency*.
 
 Además, no se tienen en cuenta las filas con valor nulo en *property_rooms* y *property_bedrooms*.
 
 ### Imputaciones
  - **created_on:** se imputa con el valor que posea start_date ya que en la gran mayoría de las filas estos valores coinciden.
- - **place_l2:** se imputa utilizando una API de geolocalización y aportando la *latitud* y *longitud*.
- - **place_l3:** se imputa de la misma forma que *place_l2*.
  - **operation:** se interpreta que es una venta.
  - **property_rooms:** se imputa con el valor de *property_bedrooms*.
  - **property_bedrooms:** se imputa con el valor de *property_rooms*.
