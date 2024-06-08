@@ -26,7 +26,7 @@ def is_null_but_not_zero(data):
 
 def checkData():
     # Create a DataFrame
-    df = pd.read_csv("1000_cryptos.csv")
+    df = pd.read_csv("dataset.csv")
     df = df.head()
 
     # Initialize an empty list to store transformed rows

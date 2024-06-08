@@ -1,2 +1,4 @@
 /dist
 /venv
+test.db
+__pycache__/
