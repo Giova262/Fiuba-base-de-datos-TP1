@@ -1,3 +1,13 @@
+# TP ETL Base de Datos - FIUBA
+
+Trabajo práctico para la materia Base de Datos (cátedra Merlino).
+
+## Alumnos
+
+| Apellido | Nombre | Padrón |
+| -------- | ------- | ------- |
+| Velazquez | Joaquín Matías | 105980 |
+
 ## Columnas del dataset
 
 | Columna Dataset | Columna SQLite | Tipo | Nulleable |
