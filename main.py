@@ -7,47 +7,52 @@ from db.databaseHelper import (
 from pandasHelper import checkData
 import pandas as pd
 
-from workflow.checkNull import NullCheck
-from workflow.checkType import TypeCheck
-from workflow.checkConsistency import ConsistencyCheck
-from workflow.checkOutlier import OutlierCheck
-from workflow.checkDuplicated import DuplicatedCheck
+from workflow.nullTransform import NullTransform
+from workflow.typeTransform import TypeTransform
+from workflow.consistencyTransform import ConsistencyTransform
+from workflow.outlierTransform import OutlierTransform
+from workflow.duplicateTransform import DuplicatedTransform
+
+def extract():
+    cols_to_keep = ["start_date",
+                    "end_date",
+                    "created_on",
+                    "latitud",
+                    "longitud",
+                    "place_l2",
+                    "place_l3",
+                    "operation",
+                    "property_type",
+                    "property_rooms",
+                    "property_bedrooms",
+                    "property_surface_total",
+                    "property_surface_covered",
+                    "property_price",
+                    "property_currency",
+                    "property_title"]
+    
+    return pd.read_csv("dataset.csv", usecols=cols_to_keep)
+
+def transform(df):
+    nullTransform = NullTransform()
+    typeTransform = TypeTransform()
+    consistencyTransform = ConsistencyTransform()
+    outlierTransform = OutlierTransform()
+    duplicatedTransform = DuplicatedTransform()
+
+    df = df.apply(nullTransform.transform)
+    df = df.apply(typeTransform.transform)
+    df = df.apply(consistencyTransform.transform)
+    df = df.apply(outlierTransform.transform)
+    df = df.apply(duplicatedTransform.transform)
+
+    return df
 
 def main():
     print("Starting..")
 
     df = extract()
-    print(df.head())
-
-def extract():
-    return pd.read_csv("dataset.csv", usecols = ["id"])
-
-def transform(df):
-    nullCheck = NullCheck()
-    typeCheck = TypeCheck()
-    consistencyCheck = ConsistencyCheck()
-    outlierCheck = OutlierCheck()
-    duplicatedCheck = DuplicatedCheck()
-
-    new_df = pd.DataFrame()
-    for index, row in df.iterrows():
-        (nullResult, keep) = NullCheck.check(row)
-        if not keep:
-            continue
-        (typeResult, keep) = TypeCheck.check(nullResult)
-        if not keep:
-            continue
-        (consistencyResult, keep) = ConsistencyCheck.check(typeResult)
-        if not keep:
-            continue
-        (outlierResult, keep) = OutlierCheck.check(consistencyResult)
-        if not keep:
-            continue
-        (duplicatedResult, keep) = DuplicatedCheck.check(outlierResult)
-        if not keep:
-            continue
-        new_df.append(duplicatedResult)
-    return new_df
+    df = transform(df)
 
 if __name__ == "__main__":
     main()
