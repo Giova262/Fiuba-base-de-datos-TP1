@@ -1,10 +1,15 @@
 class Logger:
+    @staticmethod
+    def logWarning(message, rows):
+        print(message)
+        print(rows)
     
-    def logWarning(self, row, message):
-        return
+    @staticmethod
+    def logError(message, rows):
+        print(message)
+        print(rows)
 
-    def logError(self, row, message):
-        return
-
-    def logSuccess(self, row, message):
-        return
+    @staticmethod
+    def logSuccess(message, rows):
+        print(message)
+        print(rows)

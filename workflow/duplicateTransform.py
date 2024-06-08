@@ -1,5 +1,4 @@
 from logger import Logger
 
-class DuplicatedTransform:
-    def transform(self, row):
-        return row
+def duplicateTransform(df):
+    return df

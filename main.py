@@ -7,11 +7,11 @@ from db.databaseHelper import (
 from pandasHelper import checkData
 import pandas as pd
 
-from workflow.nullTransform import NullTransform
-from workflow.typeTransform import TypeTransform
-from workflow.consistencyTransform import ConsistencyTransform
-from workflow.outlierTransform import OutlierTransform
-from workflow.duplicateTransform import DuplicatedTransform
+from workflow.nullTransform import nullTransform
+from workflow.typeTransform import typeTransform
+from workflow.consistencyTransform import consistencyTransform
+from workflow.outlierTransform import outlierTransform
+from workflow.duplicateTransform import duplicateTransform
 
 def extract():
     cols_to_keep = ["start_date",
@@ -34,17 +34,11 @@ def extract():
     return pd.read_csv("dataset.csv", usecols=cols_to_keep)
 
 def transform(df):
-    nullTransform = NullTransform()
-    typeTransform = TypeTransform()
-    consistencyTransform = ConsistencyTransform()
-    outlierTransform = OutlierTransform()
-    duplicatedTransform = DuplicatedTransform()
-
-    df = df.apply(nullTransform.transform)
-    df = df.apply(typeTransform.transform)
-    df = df.apply(consistencyTransform.transform)
-    df = df.apply(outlierTransform.transform)
-    df = df.apply(duplicatedTransform.transform)
+    df = nullTransform(df)
+    df = typeTransform(df)
+    df = consistencyTransform(df)
+    df = outlierTransform(df)
+    df = duplicateTransform(df)
 
     return df
 
@@ -53,6 +47,7 @@ def main():
 
     df = extract()
     df = transform(df)
+    print(df.shape)
 
 if __name__ == "__main__":
     main()

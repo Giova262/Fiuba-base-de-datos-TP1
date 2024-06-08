@@ -1,12 +1,20 @@
 # TP ETL Base de Datos - FIUBA
 
-Trabajo práctico para la materia Base de Datos (cátedra Merlino).
+Trabajo práctico para la materia Base de Datos (cátedra Merlino). [Enunciado](Enunciado.pdf)
 
 ## Alumnos
 
 | Apellido | Nombre | Padrón |
 | -------- | ------- | ------- |
 | Velazquez | Joaquín Matías | 105980 |
+
+# Tecnologías
+
+Para este trabajo práctico se utilizará **pandas** para el manejo y transformación de datos, y **SQLite** como base de datos a la cuál cargar los datos transformados.
+
+# Dataset
+
+Se utiliza un dataset de las publicaciones de venta de propiedades en 2021.
 
 ## Columnas del dataset
 
@@ -36,34 +44,37 @@ Trabajo práctico para la materia Base de Datos (cátedra Merlino).
  - **id:** como es un campo alfanumérico, se decidió descartarlo y agregar a la base de datos un nuevo campo id numérico.
  - **place_l4, place_l5 y place_l6:** estas columnas son nulas en la mayoría de los datos (>75%)
 
-## Workflow
+# Workflow
 
-El workflow se divide en distintas funciones que se encargan de mejorar cada fila de forma atómica. Cada función devuelve la fila (modificada si es el caso) y un booleano indicando si se debe descartar o no.
+El workflow se divide en distintas secciones de código que reciben un DataFrame de pandas y devuelven un DataFrame transformado. 
 
-### 1. CheckNull
-Descarta la fila si tiene más de dos campos en nulo, o no tiene valor en las columnas start_date, end_date, latitud, longitud, property_surface_total, property_price, o property_currency. En caso contrario, imputa los valores dependiendo de la columna.
+## 1. NullTransform
 
-Imputaciones:
+### Filtro
+Descarta la fila si tiene más de dos campos en nulo, o no tiene valor en las columnas *start_date*, *end_date*, *latitud*, *longitud*, *property_surface_total*, *property_price*, o *property_currency*.
 
- - created_on: se imputa con el valor que posea start_date ya que en la gran mayoría de las filas estos valores coinciden.
- - place_l2: se imputa utilizando una API de geolocalización y aportando la latitud y longitud.
- - place_l3: se imputa de la misma forma que __place_l2__.
- - operation: se interpreta que es una venta.
- - property_rooms: se interpreta que tiene una habitación, o se copia el valor de property_bedrooms si está disponible.
- - property_bedrooms: se imputa con el valor de property_rooms.
+Además, no se tienen en cuenta las filas con valor nulo en *property_rooms* y *property_bedrooms*.
 
-### 2. CheckType
+### Imputaciones
+ - **created_on:** se imputa con el valor que posea start_date ya que en la gran mayoría de las filas estos valores coinciden.
+ - **place_l2:** se imputa utilizando una API de geolocalización y aportando la *latitud* y *longitud*.
+ - **place_l3:** se imputa de la misma forma que *place_l2*.
+ - **operation:** se interpreta que es una venta.
+ - **property_rooms:** se imputa con el valor de *property_bedrooms*.
+ - **property_bedrooms:** se imputa con el valor de *property_rooms*.
+
+## 2. TypeTransform
 Chequea que los datos de cada columna dentro de la fila sean consistentes con los definidos en la base de datos.
-TODO resto de la documentación de esta función.
+*TODO resto de la documentación de esta función.*
 
-### 3. CheckConsistency
+## 3. ConsistencyTransform
 Chequea que los datos sean consistentes y tengan un valor lógico.
-TODO resto de la documentación de esta función.
+*TODO resto de la documentación de esta función.*
 
-### 4. CheckOutliers
+## 4. OutliersTransform
 Chequea si hay valores fuera del rango establecido.
-TODO resto de la documentación de esta función.
+*TODO resto de la documentación de esta función.*
 
-### 5. CheckDuplicated
+## 5. CheckDuplicated
 Chequea si hay valores duplicados en las columnas establecidas (par longitud-latitud).
-TODO resto de la documentación de esta función.
+*TODO resto de la documentación de esta función.*
