@@ -1,5 +1,5 @@
 from logger import Logger
 
 class DuplicatedCheck:
-    def check(row):
+    def check(self, row):
         return (row, True)

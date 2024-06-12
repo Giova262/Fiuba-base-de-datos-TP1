@@ -1,10 +1,31 @@
+
+from colorama import Fore, Style, init
+
 class Logger:
     
-    def logWarning(self, row, message):
-        return
+    def logWarning(index, message):
+        print(
+            Fore.LIGHTBLUE_EX
+            + "Row:"
+            + str(index)
+            + message
+            + Style.RESET_ALL
+        )
 
-    def logError(self, row, message):
-        return
+    def logError(index, message):
+        print(
+            Fore.RED
+            + "Row:"
+            + str(index)
+            + message
+            + Style.RESET_ALL
+        )
 
-    def logSuccess(self, row, message):
-        return
+    def logSuccess(index, message):
+        print(
+            Fore.GREEN
+            + "Row:"
+            + str(index)
+            + message
+            + Style.RESET_ALL
+        )
