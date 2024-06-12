@@ -15,18 +15,18 @@ logger = logging.getLogger(__name__)
 
 class Logger:
 
-    def logWarning(index, message):
-        logger.critical("Row:" + str(index) + message )
+    def logWarning(message, indexList):
+        logger.critical(message + '\n' + str(indexList))
         # print(Fore.LIGHTBLUE_EX + "Row:" + str(index) + message + Style.RESET_ALL)
 
-    def logError(index, message):
-        logger.error("Row:" + str(index) + message )
+    def logError(message, indexList):
+        logger.error(message + '\n' + str(indexList))
         # print(Fore.RED + "Row:" + str(index) + message + Style.RESET_ALL)
 
-    def logSuccess(index, message):
-        logger.info("Row:" + str(index) + message )
+    def logSuccess(message, indexList):
+        logger.info(message + '\n' + str(indexList))
         # print(Fore.GREEN + "Row:" + str(index) + message + Style.RESET_ALL)
     
     def loginfo(message):
-        logger.info(message )
+        logger.info(message + '\n')
         # print(Fore.GREEN + "Row:" + str(index) + message + Style.RESET_ALL)
