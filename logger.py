@@ -17,12 +17,16 @@ class Logger:
 
     def logWarning(index, message):
         logger.critical("Row:" + str(index) + message )
-        print(Fore.LIGHTBLUE_EX + "Row:" + str(index) + message + Style.RESET_ALL)
+        # print(Fore.LIGHTBLUE_EX + "Row:" + str(index) + message + Style.RESET_ALL)
 
     def logError(index, message):
         logger.error("Row:" + str(index) + message )
-        print(Fore.RED + "Row:" + str(index) + message + Style.RESET_ALL)
+        # print(Fore.RED + "Row:" + str(index) + message + Style.RESET_ALL)
 
     def logSuccess(index, message):
         logger.info("Row:" + str(index) + message )
-        print(Fore.GREEN + "Row:" + str(index) + message + Style.RESET_ALL)
+        # print(Fore.GREEN + "Row:" + str(index) + message + Style.RESET_ALL)
+    
+    def loginfo(message):
+        logger.info(message )
+        # print(Fore.GREEN + "Row:" + str(index) + message + Style.RESET_ALL)

@@ -1,7 +1,8 @@
 from logger import Logger
 
+
 class NullCheck:
-    
+
     def is_null_but_not_zero(self, data):
         if data is None:  # Check if data is None (null)
             return True
@@ -9,9 +10,9 @@ class NullCheck:
             return False
         else:  # For any other non-null value
             return False
-        
+
     def check(self, index, row):
-        print('chequeando Nulls..')
+        Logger.loginfo("Row:" + str(index) + " Checking Nulls")
         for key in row.index:
             if self.is_null_but_not_zero(row[key]):
                 Logger.logError(index, " " + str(key) + " is empty")

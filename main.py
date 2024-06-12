@@ -1,21 +1,14 @@
-from db.databaseHelper import (
-    create_connection,
-    create_table,
-    insert_user,
-    select_all_users,
-)
-from pandasHelper import checkData
-import pandas as pd
-
 from workflow.checkNull import NullCheck
 from workflow.checkType import TypeCheck
 from workflow.checkConsistency import ConsistencyCheck
 from workflow.checkOutlier import OutlierCheck
 from workflow.checkDuplicated import DuplicatedCheck
+from logger import Logger
+import pandas as pd
 
 
 def extract():
-    print("Extracting...")
+    Logger.loginfo(" Starting ETL")
     return pd.read_csv(
         "dataset.csv",
         usecols=[
@@ -40,38 +33,41 @@ def extract():
 
 
 def transform(df):
-
-    print("Transforming...")
     nullCheck = NullCheck()
     typeCheck = TypeCheck()
-    consistencyCheck = ConsistencyCheck()
     outlierCheck = OutlierCheck()
     duplicatedCheck = DuplicatedCheck()
+    consistencyCheck = ConsistencyCheck()
 
     new_df = []
+    new_df_with_erros = []
     for index, row in df.iterrows():
-
-        (nullResult, keep) = nullCheck.check(index, row)
+        (rowTemp, keep) = nullCheck.check(index, row)
         if not keep:
-            continue
-        
-        (typeResult, keep) = typeCheck.check(nullResult)
-        if not keep:
+            new_df_with_erros.append(rowTemp)
             continue
 
-        (consistencyResult, keep) = consistencyCheck.check(typeResult)
+        (rowTemp, keep) = typeCheck.check(index, rowTemp)
         if not keep:
+            new_df_with_erros.append(rowTemp)
             continue
 
-        (outlierResult, keep) = outlierCheck.check(consistencyResult)
+        (rowTemp, keep) = consistencyCheck.check(index, rowTemp)
         if not keep:
+            new_df_with_erros.append(rowTemp)
             continue
 
-        (duplicatedResult, keep) = duplicatedCheck.check(outlierResult)
+        (rowTemp, keep) = outlierCheck.check(index, rowTemp)
         if not keep:
+            new_df_with_erros.append(rowTemp)
             continue
 
-        new_df.append(duplicatedResult)
+        (rowTemp, keep) = duplicatedCheck.check(index, rowTemp)
+        if not keep:
+            new_df_with_erros.append(rowTemp)
+            continue
+
+        new_df.append(rowTemp)
 
     return new_df
 
@@ -80,7 +76,7 @@ def main():
     df = extract()
     df = df.head()
     transform(df)
-    # print(df.head())
+
 
 if __name__ == "__main__":
     main()

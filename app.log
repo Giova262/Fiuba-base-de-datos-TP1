@@ -1,0 +1,21 @@
+2024-06-11 22:29:13,239 - logger - INFO -  Starting ETL
+2024-06-11 22:29:13,381 - logger - INFO - Row:0 Checking Nulls
+2024-06-11 22:29:13,381 - logger - INFO - Row:0 Nulls are OK
+2024-06-11 22:29:13,382 - logger - INFO - Row:0 Checking Types
+2024-06-11 22:29:13,382 - logger - ERROR - Row:0 place_l3 is not TEXT - Value: nan
+2024-06-11 22:29:13,382 - logger - INFO - Row:1 Checking Nulls
+2024-06-11 22:29:13,382 - logger - INFO - Row:1 Nulls are OK
+2024-06-11 22:29:13,382 - logger - INFO - Row:1 Checking Types
+2024-06-11 22:29:13,382 - logger - ERROR - Row:1 place_l3 is not TEXT - Value: nan
+2024-06-11 22:29:13,383 - logger - INFO - Row:2 Checking Nulls
+2024-06-11 22:29:13,383 - logger - INFO - Row:2 Nulls are OK
+2024-06-11 22:29:13,383 - logger - INFO - Row:2 Checking Types
+2024-06-11 22:29:13,383 - logger - ERROR - Row:2 place_l3 is not TEXT - Value: nan
+2024-06-11 22:29:13,384 - logger - INFO - Row:3 Checking Nulls
+2024-06-11 22:29:13,384 - logger - INFO - Row:3 Nulls are OK
+2024-06-11 22:29:13,384 - logger - INFO - Row:3 Checking Types
+2024-06-11 22:29:13,384 - logger - ERROR - Row:3 place_l3 is not TEXT - Value: nan
+2024-06-11 22:29:13,384 - logger - INFO - Row:4 Checking Nulls
+2024-06-11 22:29:13,385 - logger - INFO - Row:4 Nulls are OK
+2024-06-11 22:29:13,385 - logger - INFO - Row:4 Checking Types
+2024-06-11 22:29:13,385 - logger - ERROR - Row:4 place_l3 is not TEXT - Value: nan
