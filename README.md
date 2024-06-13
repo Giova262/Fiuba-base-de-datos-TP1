@@ -74,5 +74,4 @@ Chequea si hay valores fuera del rango establecido.
 *TODO resto de la documentación de esta función.*
 
 ## 5. CheckDuplicated
-Chequea si hay valores duplicados en las columnas establecidas (par longitud-latitud).
-*TODO resto de la documentación de esta función.*
+Se mantiene una ocurrencia de los registros duplicados. Se dice registro duplicado al tener todos los campos con los mismos valores.
