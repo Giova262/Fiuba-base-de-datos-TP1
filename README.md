@@ -66,8 +66,7 @@ Chequea que los datos de cada columna dentro de la fila sean consistentes con lo
 *TODO resto de la documentación de esta función.*
 
 ## 3. ConsistencyTransform
-Chequea que los datos sean consistentes y tengan un valor lógico.
-*TODO resto de la documentación de esta función.*
+Transforma las columnas fecha en formato fecha de pandas, YYYY-MM-DD. Asegura que los valores correspondan a formato entero o flotante.
 
 ## 4. OutliersTransform
 Chequea si hay valores fuera del rango establecido.
