@@ -25,7 +25,7 @@ Se utiliza un dataset de las publicaciones de venta de propiedades en 2021.
 | created_on | created_on | TEXT* | No |
 | latitud | lat | REAL | No |
 | longitud | lng | REAL | No |
-| place_l2 | province | VARCHAR[30] | No |
+| place_l2 | province | VARCHAR[30] | Si |
 | place_l3 | city | VARCHAR[30] | Si |
 | operation | operation | VARCHAR[10] | No |
 | property_type | type | VARCHAR[12] | No |
@@ -35,7 +35,7 @@ Se utiliza un dataset de las publicaciones de venta de propiedades en 2021.
 | property_surface_covered | surface_covered | INTEGER | Si |
 | property_price | price | REAL | No |
 | property_currency | currency | VARCHAR[4] | No |
-| property_title | title | VARCHAR[200] | Si |
+| property_title | title | VARCHAR[200] | No |
 
 *SQLite no tiene una clase DATE, pero cuenta con una función para transformar una fecha a TEXT y viceversa.
 
