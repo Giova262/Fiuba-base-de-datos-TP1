@@ -9,6 +9,7 @@ Trabajo práctico para la materia Base de Datos (cátedra Merlino). [Enunciado](
 | Velazquez | Joaquín Matías | 105980 |
 | Giovanni Valdivia | Josué | 93075 |
 | Ledesma | Dylan | 102876 |
+| Rea | Matías | 99770 |
 
 # Tecnologías
 
