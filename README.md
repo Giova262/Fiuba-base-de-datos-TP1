@@ -7,10 +7,24 @@ Trabajo práctico para la materia Base de Datos (cátedra Merlino). [Enunciado](
 | Apellido | Nombre | Padrón |
 | -------- | ------- | ------- |
 | Velazquez | Joaquín Matías | 105980 |
+| Giovanni Valdivia | Josué | 93075 |
+| Ledesma | Dylan | 102876 |
 
 # Tecnologías
 
 Para este trabajo práctico se utilizará **pandas** para el manejo y transformación de datos, y **SQLite** como base de datos a la cuál cargar los datos transformados.
+
+## Requisitos
+### pandas
+
+```bash
+pip install pandas
+```
+### colorama
+
+```bash
+pip install colorama
+```
 
 # Dataset
 
@@ -63,14 +77,18 @@ Además, no se tienen en cuenta las filas con valor nulo en *property_rooms* y *
 
 ## 2. TypeTransform
 Chequea que los datos de cada columna dentro de la fila sean consistentes con los definidos en la base de datos.
-*TODO resto de la documentación de esta función.*
 
-## 3. ConsistencyTransform
-Transforma las columnas fecha en formato fecha de pandas, YYYY-MM-DD. Asegura que los valores correspondan a formato entero o flotante.
-
-## 4. OutliersTransform
+## 3. OutliersTransform
 Chequea si hay valores fuera del rango establecido.
-*TODO resto de la documentación de esta función.*
 
-## 5. CheckDuplicated
+### start_date y end_date
+Elimina cualquier fila que tenga un start_date posterior al end_date.
+
+### latitud y longitud
+Se eliminan también las filas que tengan valores de latitud mayor a 90 o menores a -90, y lo mismo con longitud y 180/-180.
+
+### property_type
+Se eliminan las filas que tienen un tipo de propiedad incorrecto.
+
+## 4. CheckDuplicated
 Se mantiene una ocurrencia de los registros duplicados. Se dice registro duplicado al tener todos los campos con los mismos valores.

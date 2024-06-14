@@ -64,6 +64,6 @@ def insert_property_post(conn, property_post):
 
 def get_count(conn):
     cursor = conn.cursor()
-    sql = "SELECT COUNT(*) FROM property_post"
+    sql = "SELECT COUNT(*) FROM property_posts"
     cursor.execute(sql)
     return cursor.fetchone()[0]

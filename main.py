@@ -31,7 +31,6 @@ def extract():
 def transform(df):
     df = nullTransform(df)
     df = typeTransform(df)
-    # df = consistencyTransform(df)
     df = outlierTransform(df)
     df = duplicateTransform(df)
 
@@ -42,6 +41,7 @@ def transform(df):
 def load(df):
     conn = setDB()
     create_table(conn)
+    existing_registers_count = get_count(conn)
     for index, row in df.iterrows():
         property_post = tuple(row)
         last_row_id = insert_property_post(conn, property_post)
@@ -49,7 +49,8 @@ def load(df):
             Logger.loginfo(f"Se cargó la fila {last_row_id}")
         else:
             Logger.logError("No se pudo cargar la fila:", index)
-    print(get_count(conn))
+    Logger.loginfo(f"Registros previo a inserción: {existing_registers_count}")
+    Logger.loginfo(f"Registros luego de inserción: {get_count(conn)}")
 
 def main():
     print("Starting..")
