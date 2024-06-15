@@ -10,6 +10,7 @@ Trabajo práctico para la materia Base de Datos (cátedra Merlino). [Enunciado](
 | Giovanni Valdivia | Josué | 93075 |
 | Ledesma | Dylan | 102876 |
 | Rea | Matías | 99770 |
+| Taillefer de Laportalière | Joseph | 2386706 | 
 
 # Tecnologías
 
